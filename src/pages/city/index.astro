@@ -1,0 +1,210 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const title = '服务城市 | 有赞内蒙古运营中心 - 覆盖全内蒙11个城市';
+const description = '有赞内蒙古运营中心服务覆盖全内蒙古11个城市：呼和浩特、包头、赤峰、通辽、鄂尔多斯、乌兰察布、巴彦淖尔、乌海、兴安盟、锡林郭勒、阿拉善。无论您在哪个城市，都能获得本地化上门服务。';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  'itemListElement': [
+    { '@type': 'ListItem', 'position': 1, 'name': '首页', 'item': 'https://www.shark888.cn/' },
+    { '@type': 'ListItem', 'position': 2, 'name': '服务城市', 'item': 'https://www.shark888.cn/city/' }
+  ]
+};
+
+const cities = [
+  { name: '呼和浩特', slug: 'huhehaote', desc: '内蒙古首府，总部所在地' },
+  { name: '包头', slug: 'baotou', desc: '稀土之都，工业重镇' },
+  { name: '赤峰', slug: 'chifeng', desc: '人口大市，特产丰富' },
+  { name: '通辽', slug: 'tongliao', desc: '科尔沁草原，牛羊肉优质' },
+  { name: '鄂尔多斯', slug: 'eerduosi', desc: '经济活跃，消费力强' },
+  { name: '乌兰察布', slug: 'wulanchabu', desc: '京津冀门户，交通便利' },
+  { name: '巴彦淖尔', slug: 'bayannaoer', desc: '河套平原，塞上江南' },
+  { name: '乌海', slug: 'wuhai', desc: '葡萄之乡，沙漠绿洲' },
+  { name: '兴安盟', slug: 'xinganmeng', desc: '大兴安岭南麓，大米优质' },
+  { name: '锡林郭勒', slug: 'xilinguole', desc: '世界四大草原之一' },
+  { name: '阿拉善', slug: 'alashan', desc: '沙漠特产，肉苁蓉之乡' }
+];
+---
+
+<Layout title={title} description={description} schema={breadcrumbSchema}>
+  <Header />
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <nav aria-label="breadcrumb" class="breadcrumb">
+          <ol>
+            <li><a href="/">首页</a></li>
+            <li>服务城市</li>
+          </ol>
+        </nav>
+        <h1>服务全内蒙古11个城市</h1>
+        <p>无论您在哪个城市，我们都能提供本地化的上门服务</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="city-list">
+          {cities.map(c => (
+            <a href={`/city/${c.slug}/`} class="city-card">
+              <div class="city-info">
+                <h3>{c.name}</h3>
+                <p>{c.desc}</p>
+              </div>
+              <span class="city-arrow">&rarr;</span>
+            </a>
+          ))}
+        </div>
+
+        <div class="service-promise">
+          <h2>服务承诺</h2>
+          <div class="promise-grid">
+            <div class="promise-item">
+              <strong>免费上门演示</strong>
+              <p>主要城市均可安排专业人员上门演示有赞功能</p>
+            </div>
+            <div class="promise-item">
+              <strong>一对一培训</strong>
+              <p>根据您的业务场景，提供针对性的操作培训</p>
+            </div>
+            <div class="promise-item">
+              <strong>7×12小时售后</strong>
+              <p>工作日和周末均有专人响应，确保问题及时解决</p>
+            </div>
+            <div class="promise-item">
+              <strong>长期陪跑</strong>
+              <p>不是一次性交付，而是持续陪伴您的数字化成长</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <h2>立即联系我们</h2>
+        <p>拨打 <a href="tel:15652701682">15652701682</a>（同微信），预约您所在城市的免费上门演示</p>
+        <div class="cta-buttons">
+          <a href="tel:15652701682" class="btn">电话咨询</a>
+          <a href="/contact/" class="btn btn-secondary">在线咨询</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+    padding: 48px 0 40px;
+  }
+  .breadcrumb ol {
+    display: flex;
+    list-style: none;
+    gap: 8px;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+  }
+  .breadcrumb a { color: rgba(255,255,255,0.7); }
+  .breadcrumb li:not(:last-child)::after {
+    content: '>';
+    margin-left: 8px;
+    color: rgba(255,255,255,0.4);
+  }
+  .page-hero h1 { font-size: 2.5rem; margin-bottom: 12px; }
+  .page-hero p { color: rgba(255,255,255,0.7); }
+  
+  .section { padding: 64px 0; }
+  
+  .city-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 16px;
+    margin-bottom: 64px;
+  }
+  .city-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 24px;
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    color: var(--text);
+    transition: all 0.3s;
+  }
+  .city-card:hover {
+    background: var(--primary);
+    color: white;
+    transform: translateY(-4px);
+    text-decoration: none;
+  }
+  .city-card:hover p { color: rgba(255,255,255,0.8); }
+  .city-card:hover .city-arrow { color: white; }
+  .city-info h3 { margin-bottom: 4px; font-size: 1.2rem; }
+  .city-info p { font-size: 0.9rem; color: var(--text-light); }
+  .city-arrow {
+    font-size: 1.5rem;
+    color: var(--primary);
+    font-weight: 700;
+  }
+  
+  .service-promise h2 {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 32px;
+  }
+  .promise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+  }
+  .promise-item {
+    text-align: center;
+    padding: 32px;
+    background: var(--bg-light);
+    border-radius: var(--radius);
+  }
+  .promise-item strong { display: block; margin-bottom: 8px; font-size: 1.1rem; }
+  .promise-item p { color: var(--text-light); font-size: 0.9rem; }
+  
+  .cta-section {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+  }
+  .cta-section h2 { font-size: 2.2rem; margin-bottom: 16px; }
+  .cta-section p { font-size: 1.1rem; margin-bottom: 32px; opacity: 0.9; }
+  .cta-section a { color: white; text-decoration: underline; }
+  .cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cta-section .btn {
+    background: white;
+    color: var(--primary);
+  }
+  .cta-section .btn:hover { background: var(--bg-light); }
+  .cta-section .btn-secondary {
+    background: transparent;
+    color: white;
+    border-color: white;
+  }
+  .cta-section .btn-secondary:hover {
+    background: white;
+    color: var(--primary);
+  }
+  
+  @media (max-width: 768px) {
+    .page-hero h1 { font-size: 1.8rem; }
+  }
+</style>

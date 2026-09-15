@@ -1,0 +1,166 @@
+---
+const navItems = [
+  { label: '首页', href: '/' },
+  { label: '核心服务', href: '/services/' },
+  { label: '服务城市', href: '/city/' },
+  { label: '常见问题', href: '/faq/' },
+  { label: '知识中心', href: '/blog/' },
+  { label: '关于我们', href: '/about/' },
+  { label: '联系我们', href: '/contact/' },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="/" class="logo">
+      <span class="logo-icon">&#9776;</span>
+      <span class="logo-text">有赞内蒙古运营中心</span>
+    </a>
+    <nav class="main-nav" aria-label="主导航">
+      <ul>
+        {navItems.map(item => (
+          <li>
+            <a 
+              href={item.href} 
+              class={currentPath === item.href || currentPath.startsWith(item.href) && item.href !== '/' ? 'active' : ''}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+    <a href="tel:15652701682" class="header-phone">
+      <span class="phone-icon">&#9742;</span>
+      <span>15652701682</span>
+    </a>
+    <button class="mobile-menu-btn" aria-label="打开菜单" onclick="document.querySelector('.main-nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+  .header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .logo:hover { text-decoration: none; }
+  .logo-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: var(--primary);
+    color: white;
+    border-radius: var(--radius);
+    font-size: 1.1rem;
+  }
+  .main-nav ul {
+    display: flex;
+    gap: 28px;
+    list-style: none;
+  }
+  .main-nav a {
+    color: var(--text);
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 4px 0;
+    position: relative;
+  }
+  .main-nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--primary);
+    transition: width 0.3s;
+  }
+  .main-nav a:hover::after,
+  .main-nav a.active::after {
+    width: 100%;
+  }
+  .header-phone {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: var(--primary);
+    color: white;
+    border-radius: var(--radius);
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .header-phone:hover {
+    background: var(--primary-dark);
+    text-decoration: none;
+  }
+  .phone-icon { font-size: 1.1rem; }
+  .mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+  }
+  .mobile-menu-btn span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text);
+    transition: all 0.3s;
+  }
+  
+  @media (max-width: 768px) {
+    .main-nav {
+      position: fixed;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: white;
+      border-bottom: 1px solid var(--border);
+      padding: 16px 24px;
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s;
+    }
+    .main-nav.open {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .main-nav ul {
+      flex-direction: column;
+      gap: 12px;
+    }
+    .mobile-menu-btn { display: flex; }
+    .header-phone { display: none; }
+  }
+</style>

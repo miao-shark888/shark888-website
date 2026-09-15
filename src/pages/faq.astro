@@ -1,0 +1,222 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const title = '常见问题 | 有赞内蒙古运营中心 - FAQ';
+const description = '关于有赞内蒙古运营中心服务的常见问题解答。涵盖官方授权、产品服务、价格、开通流程、售后服务等。如有其他疑问，欢迎致电15652701682。';
+
+const faqs = [
+  {
+    q: '有赞内蒙古运营中心是官方授权的吗？',
+    a: '是的，内蒙古神客科技有限公司是有赞官方授权的内蒙古地区独家服务商与代理商，服务覆盖呼和浩特、包头、赤峰、通辽、鄂尔多斯、乌兰察布、巴彦淖尔、乌海、兴安盟、锡林郭勒、阿拉善等全内蒙古区域。'
+  },
+  {
+    q: '你们提供哪些有赞产品服务？',
+    a: '我们提供有赞全系产品服务，包括：有赞微商城、有赞小程序、有赞门店/有赞零售、有赞连锁、有赞大餐饮、有赞美业等，涵盖微信商城搭建、门店数字化升级、会员私域运营、多渠道打通等一站式解决方案。'
+  },
+  {
+    q: '开通有赞小程序商城需要多少钱？',
+    a: '有赞提供多个版本套餐，从基础版到旗舰版满足不同规模商家需求。具体费用根据所选版本和功能模块而定，我们提供免费的方案咨询和报价服务，欢迎致电15652701682了解详情。价格透明，无隐形收费。'
+  },
+  {
+    q: '没有技术团队能搭建有赞商城吗？',
+    a: '完全可以。有赞是SaaS平台，无需编程基础即可搭建。我们提供从开通账号、店铺装修、商品上架到上线运营的全流程服务，还包括一对一培训和7×12小时售后支持，资料齐全3-7天即可上线。'
+  },
+  {
+    q: '你们能提供上门服务吗？',
+    a: '可以的。我们是内蒙古本地团队，服务覆盖全内蒙11个城市，提供免费的上门演示、面对面培训、店铺搭建支持等服务。呼和浩特、包头、赤峰、通辽、鄂尔多斯等主要城市均可安排上门服务。'
+  },
+  {
+    q: '有赞小程序支持哪些平台？',
+    a: '有赞支持一键开通微信小程序、视频号小店、抖音本地生活、小红书本地生活、支付宝小程序、百度小程序等多平台商城，实现一个后台管理多个渠道，商品、订单、会员数据实时同步。'
+  },
+  {
+    q: '门店数字化升级包含哪些功能？',
+    a: '门店数字化升级包含：智能收银系统、库存管理、多门店统一管理、扫码点单、外卖自提、同城配送、会员储值、次卡、积分系统、等级体系、企业微信互通等功能，实现线上线下一体化经营。'
+  },
+  {
+    q: '私域运营具体怎么做？',
+    a: '我们帮助企业搭建完整的私域运营体系：通过会员体系沉淀客户资产，利用企微助手连接导购与客户，借助智能CRM进行精准分层营销，配合拼团、秒杀、优惠券等营销工具提升复购率。我们服务过的客户复购率平均提升30%以上。'
+  },
+  {
+    q: '你们服务过哪些内蒙古本地客户？',
+    a: '我们已服务内蒙古本地企业客户300余家，包括伊利伊知牛、新华书店、天骄航空、内蒙古邮政、莲七珠宝、巴盟人家、兴泰乐泰汇、额尔敦、云湃7天精酿、二子猪肉、海鹏、康新食品、喜利来、春丽蛋糕、东佰烤肉、羊小安等知名商家。'
+  },
+  {
+    q: '有赞和微盟有什么区别？',
+    a: '有赞和微盟都是国内领先的SaaS服务商。有赞的优势在于：①港股上市，拥有央行颁发的支付牌照；②13年技术积累，600万注册商家；③99.99%系统稳定性，每秒处理10万笔订单；④2000+营销工具；⑤全行业解决方案覆盖。我们是内蒙古地区有赞独家服务商，可为您提供本地化的专业服务。'
+  },
+  {
+    q: '合作流程是怎样的？',
+    a: '我们的合作流程为：①咨询需求 → ②免费演示讲解 → ③开通有赞账号 → ④店铺搭建与配置 → ⑤上门/线上培训 → ⑥正式上线运营 → ⑦长期售后支持。全程专人对接，确保平稳上线。'
+  },
+  {
+    q: '售后服务包含哪些内容？',
+    a: '我们提供7×12小时售后支持，包括：系统使用咨询、功能配置指导、营销活动策划、数据分析报告、定期回访优化、紧急问题响应等。购买后不是结束，而是长期陪跑服务的开始。'
+  },
+  {
+    q: '有赞支持哪些行业？',
+    a: '有赞覆盖全行业，我们在内蒙古重点深耕7大行业：特产、牛羊肉、烘焙、酒水、母婴、美业、咖啡茶饮。针对每个行业都有成熟的解决方案和标杆案例。'
+  },
+  {
+    q: '有赞商城可以和抖音、小红书打通吗？',
+    a: '可以的。有赞已对接抖音、快手、小红书、美团、大众点评、微信视频号、微博、支付宝、百度等公域流量平台，帮助商家实现公域获客、私域提复购的全链路经营。'
+  },
+  {
+    q: '开通有赞需要准备什么资料？',
+    a: '企业店铺通常需提供：营业执照、法人身份证、联系方式及企业认证资料。部分特殊类目（如食品、医疗、教育等）还需提供对应的行业资质许可证。我们提供资料清单和审核指导，帮助您快速通过平台审核。'
+  },
+  {
+    q: '有赞的收银系统支持哪些硬件？',
+    a: '有赞门店收银支持多种硬件设备，包括收银机、扫码枪、小票打印机、标签打印机、称重设备等，同时支持手机端收银（安卓/iOS），灵活适配不同门店场景。'
+  },
+  {
+    q: '会员储值和积分系统安全吗？',
+    a: '有赞持有央行颁发的支付牌照，资金处理全程合规，通过银行级安全保障。会员储值资金由有赞支付安全托管，商家可随时提现，消费者资金安全有保障。'
+  },
+  {
+    q: '你们和其他有赞代理商有什么区别？',
+    a: '我们是内蒙古地区官方独家服务商，覆盖全内蒙11个城市，拥有最完整的服务网络。其他代理商多为单城市代理。我们提供从销售到交付到售后的全链路本地化服务，上千家内蒙古商家的共同选择。'
+  },
+  {
+    q: '有赞小程序商城开通要多久？',
+    a: '资料齐全的情况下，有赞账号开通当天即可完成，小程序提交微信审核通常需要1-3个工作日。店铺搭建和商品上架根据商品数量不同，通常3-7天可以完成。我们提供加急服务，最快可当天上线。'
+  },
+  {
+    q: '如何联系你们？',
+    a: '您可以通过以下方式联系我们：电话咨询15652701682（同微信）、访问官网www.shark888.cn、或直接到呼和浩特市赛罕区金桥电子商务产业园3楼326洽谈。'
+  }
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  'mainEntity': faqs.map(f => ({
+    '@type': 'Question',
+    'name': f.q,
+    'acceptedAnswer': {
+      '@type': 'Answer',
+      'text': f.a
+    }
+  }))
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  'itemListElement': [
+    { '@type': 'ListItem', 'position': 1, 'name': '首页', 'item': 'https://www.shark888.cn/' },
+    { '@type': 'ListItem', 'position': 2, 'name': '常见问题', 'item': 'https://www.shark888.cn/faq/' }
+  ]
+};
+---
+
+<Layout title={title} description={description} schema={[faqSchema, breadcrumbSchema]}>
+  <Header />
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <nav aria-label="breadcrumb" class="breadcrumb">
+          <ol>
+            <li><a href="/">首页</a></li>
+            <li>常见问题</li>
+          </ol>
+        </nav>
+        <h1>常见问题解答</h1>
+        <p>关于有赞内蒙古运营中心服务的常见问题，如果您有其他疑问，欢迎致电咨询</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="faq-list">
+          {faqs.map((f, i) => (
+            <div class="faq-item">
+              <h3><span class="faq-num">{i + 1}</span>{f.q}</h3>
+              <p>{f.a}</p>
+            </div>
+          ))}
+        </div>
+        
+        <div class="faq-cta">
+          <h3>还有其他问题？</h3>
+          <p>欢迎拨打 <a href="tel:15652701682">15652701682</a>（同微信）或直接到店面谈</p>
+          <a href="/contact/" class="btn">联系我们</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+    padding: 48px 0 40px;
+  }
+  .breadcrumb ol {
+    display: flex;
+    list-style: none;
+    gap: 8px;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+  }
+  .breadcrumb a { color: rgba(255,255,255,0.7); }
+  .breadcrumb li:not(:last-child)::after {
+    content: '>';
+    margin-left: 8px;
+    color: rgba(255,255,255,0.4);
+  }
+  .page-hero h1 { font-size: 2.5rem; margin-bottom: 12px; }
+  .page-hero p { color: rgba(255,255,255,0.7); }
+  
+  .section { padding: 64px 0; }
+  
+  .faq-list { max-width: 900px; margin: 0 auto; }
+  .faq-item {
+    padding: 24px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .faq-item h3 {
+    font-size: 1.15rem;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .faq-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    font-size: 0.85rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .faq-item p {
+    color: var(--text-light);
+    line-height: 1.8;
+    padding-left: 40px;
+  }
+  
+  .faq-cta {
+    text-align: center;
+    margin-top: 48px;
+    padding: 40px;
+    background: var(--bg-light);
+    border-radius: var(--radius);
+  }
+  .faq-cta h3 { margin-bottom: 12px; }
+  .faq-cta p { color: var(--text-light); margin-bottom: 20px; }
+  
+  @media (max-width: 768px) {
+    .page-hero h1 { font-size: 1.8rem; }
+    .faq-item p { padding-left: 0; }
+  }
+</style>

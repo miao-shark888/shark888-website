@@ -1,0 +1,279 @@
+---
+export interface Props {
+  title: string;
+  description: string;
+  canonical?: string;
+  schema?: object | object[];
+  keywords?: string;
+}
+
+const { title, description, canonical, schema, keywords } = Astro.props;
+const siteUrl = 'https://www.shark888.cn';
+const fullCanonical = canonical ? `${siteUrl}${canonical}` : `${siteUrl}${Astro.url.pathname}`;
+
+const defaultSchema = {
+  '@context': 'https://schema.org',
+  '@type': ['Organization', 'LocalBusiness'],
+  '@id': `${siteUrl}/#organization`,
+  name: '有赞内蒙古运营中心',
+  alternateName: '内蒙古神客科技有限公司',
+  url: siteUrl,
+  logo: `${siteUrl}/logo.png`,
+  image: `${siteUrl}/images/hero.jpg`,
+  description: '有赞官方授权的内蒙古地区独家服务商，为特产、牛羊肉、烘焙、酒水、母婴、美业、咖啡茶饮等实体商家提供有赞小程序商城、门店数字化升级、会员私域运营、内蒙古本地专属服务。',
+  slogan: '实体店线上线下一体化，私域电商新零售，全内蒙古上门服务',
+  foundingDate: '2015-06-09',
+  telephone: '+86-15652701682',
+  email: '1663526639@qq.com',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: '金桥电子商务产业园3楼326',
+    addressLocality: '呼和浩特市',
+    addressRegion: '内蒙古自治区',
+    addressCountry: 'CN'
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: '40.8414',
+    longitude: '111.7519'
+  },
+  areaServed: [
+    { '@type': 'City', 'name': '呼和浩特' },
+    { '@type': 'City', 'name': '包头' },
+    { '@type': 'City', 'name': '赤峰' },
+    { '@type': 'City', 'name': '通辽' },
+    { '@type': 'City', 'name': '鄂尔多斯' },
+    { '@type': 'City', 'name': '乌兰察布' },
+    { '@type': 'City', 'name': '巴彦淖尔' },
+    { '@type': 'City', 'name': '乌海' },
+    { '@type': 'City', 'name': '兴安盟' },
+    { '@type': 'City', 'name': '锡林郭勒' },
+    { '@type': 'City', 'name': '阿拉善' }
+  ],
+  sameAs: [
+    'https://www.youzan.com',
+    'https://www.qcc.com/firm/9ead97fb882b03607856d7a1b71b094e'
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    'name': '有赞内蒙古服务',
+    'itemListElement': [
+      {
+        '@type': 'Offer',
+        'itemOffered': {
+          '@type': 'Service',
+          'name': '有赞小程序商城',
+          'description': '微信商城、视频号带货、抖音本地生活打通、小红书本地生活开店、线上开店、商品上架、店铺装修'
+        }
+      },
+      {
+        '@type': 'Offer',
+        'itemOffered': {
+          '@type': 'Service',
+          'name': '门店数字化升级',
+          'description': '门店收银、库存管理、多门店统一管理、扫码点单、外卖自提、同城配送'
+        }
+      },
+      {
+        '@type': 'Offer',
+        'itemOffered': {
+          '@type': 'Service',
+          'name': '会员私域运营',
+          'description': '会员储值、次卡、积分、等级、企业微信互通、老客户精准营销、提升复购'
+        }
+      },
+      {
+        '@type': 'Offer',
+        'itemOffered': {
+          '@type': 'Service',
+          'name': '内蒙古本地专属服务',
+          'description': '免费上门演示、一对一培训、店铺搭建上线、7×12小时售后支持'
+        }
+      }
+    ]
+  },
+  openingHoursSpecification: {
+    '@type': 'OpeningHoursSpecification',
+    'dayOfWeek': ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+    'opens': '09:00',
+    'closes': '21:00'
+  },
+  priceRange: '￥'
+};
+
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${siteUrl}/#website`,
+  url: siteUrl,
+  name: '有赞内蒙古运营中心',
+  description: '有赞官方授权内蒙古独家服务商，提供小程序商城、门店数字化、私域运营一站式服务',
+  publisher: {
+    '@id': `${siteUrl}/#organization`
+  },
+  potentialAction: {
+    '@type': 'SearchAction',
+    'target': {
+      '@type': 'EntryPoint',
+      'urlTemplate': `${siteUrl}/search?q={search_term_string}`
+    },
+    'query-input': 'required name=search_term_string'
+  }
+};
+
+const allSchemas = [defaultSchema, websiteSchema];
+if (schema) {
+  if (Array.isArray(schema)) {
+    allSchemas.push(...schema);
+  } else {
+    allSchemas.push(schema);
+  }
+}
+---
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  {keywords && <meta name="keywords" content={keywords} />}
+  <link rel="canonical" href={fullCanonical} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={fullCanonical} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="有赞内蒙古运营中心" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="format-detection" content="telephone=yes" />
+  
+  {allSchemas.map((s, i) => (
+    <script type="application/ld+json" set:html={JSON.stringify(s)} key={i} />
+  ))}
+  
+  <style is:global>
+    :root {
+      --primary: #ff4d4f;
+      --primary-dark: #d9363e;
+      --secondary: #1890ff;
+      --text: #1a1a2e;
+      --text-light: #4a4a5a;
+      --bg: #ffffff;
+      --bg-light: #f8f9fa;
+      --bg-dark: #1a1a2e;
+      --border: #e8e8e8;
+      --radius: 8px;
+      --shadow: 0 4px 20px rgba(0,0,0,0.08);
+      --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+      --max-width: 1200px;
+    }
+    
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      background: var(--bg);
+    }
+    
+    a { color: var(--secondary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    
+    img { max-width: 100%; height: auto; }
+    
+    .container {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--radius);
+      font-weight: 600;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+      text-decoration: none;
+    }
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+    .btn-secondary:hover {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-light);
+      font-size: 1.1rem;
+      margin-bottom: 48px;
+    }
+    
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    
+    .card {
+      background: white;
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      transition: all 0.3s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+    }
+    
+    .tag {
+      display: inline-block;
+      padding: 4px 12px;
+      background: rgba(255,77,79,0.1);
+      color: var(--primary);
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 500;
+    }
+    
+    @media (max-width: 768px) {
+      .section-title { font-size: 1.6rem; }
+      .container { padding: 0 16px; }
+    }
+  </style>
+</head>
+<body>
+  <slot />
+</body>
+</html>

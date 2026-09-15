@@ -1,0 +1,433 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+export function getStaticPaths() {
+  const cities = [
+    {
+      slug: 'huhehaote',
+      name: '呼和浩特',
+      lat: '40.8414',
+      lng: '111.7519',
+      specialties: ['内蒙古特产', '奶制品', '牛肉干', '羊绒制品'],
+      localCases: [
+        { name: '伊利伊知牛', result: '牛肉产品线上商城搭建，会员体系运营' },
+        { name: '新华书店', result: '线上线下图书销售一体化' },
+        { name: '天骄航空', result: '会员运营与积分体系' },
+        { name: '内蒙古邮政', result: '邮政服务线上化' },
+        { name: '莲七珠宝', result: '珠宝门店数字化与私域运营' }
+      ],
+      intro: '呼和浩特是内蒙古自治区首府，也是我们的总部所在地。作为有赞官方授权的内蒙古独家服务商，我们为呼和浩特及周边地区的实体商家提供全方位的数字化升级服务。'
+    },
+    {
+      slug: 'baotou',
+      name: '包头',
+      lat: '40.6582',
+      lng: '109.8403',
+      specialties: ['稀土特产', '钢铁文化', '牛羊肉', '奶制品'],
+      localCases: [
+        { name: '包头本地商家', result: '多家餐饮门店数字化升级' }
+      ],
+      intro: '包头是内蒙古重要的工业城市，也是我们的重点服务城市之一。我们为包头的实体商家提供有赞小程序商城搭建、门店数字化升级、会员私域运营等一站式解决方案。'
+    },
+    {
+      slug: 'chifeng',
+      name: '赤峰',
+      lat: '42.2578',
+      lng: '118.8869',
+      specialties: ['赤峰对夹', '敖汉小米', '牛羊肉', '林西特产'],
+      localCases: [
+        { name: '赤峰本地商家', result: '特产电商化与私域运营' }
+      ],
+      intro: '赤峰是内蒙古人口最多的城市，特产资源丰富。我们为赤峰的特产店、烘焙店、牛羊肉商家等提供专业的数字化升级服务，助力本地商家开拓线上市场。'
+    },
+    {
+      slug: 'tongliao',
+      name: '通辽',
+      lat: '43.6525',
+      lng: '122.2443',
+      specialties: ['科尔沁牛肉', '通辽黄玉米', '蒙古族特产', '牛羊肉'],
+      localCases: [
+        { name: '通辽本地商家', result: '牛羊肉线上销售与会员运营' }
+      ],
+      intro: '通辽地处科尔沁草原腹地，牛羊肉资源丰富。我们为通辽的牛羊肉商家、特产店等提供有赞小程序商城搭建和私域运营服务，帮助本地优质产品走向全国。'
+    },
+    {
+      slug: 'eerduosi',
+      name: '鄂尔多斯',
+      lat: '39.6083',
+      lng: '109.7807',
+      specialties: ['阿尔巴斯山羊绒', '鄂尔多斯美食', '牛羊肉', '特产'],
+      localCases: [
+        { name: '鄂尔多斯本地商家', result: '门店数字化与会员体系搭建' }
+      ],
+      intro: '鄂尔多斯是内蒙古经济最活跃的城市之一。我们为鄂尔多斯的实体商家提供有赞全系产品服务，帮助商家实现线上线下一体化经营。'
+    },
+    {
+      slug: 'wulanchabu',
+      name: '乌兰察布',
+      lat: '41.0341',
+      lng: '113.1338',
+      specialties: ['察哈尔羊肉', '马铃薯', '奶制品', '特产'],
+      localCases: [
+        { name: '乌兰察布本地商家', result: '特产电商化与数字化升级' }
+      ],
+      intro: '乌兰察布地处京津冀经济圈，交通便利。我们为乌兰察布的实体商家提供本地化的有赞服务，帮助商家把握京津冀消费市场的机遇。'
+    },
+    {
+      slug: 'bayannaoer',
+      name: '巴彦淖尔',
+      lat: '40.7432',
+      lng: '107.3877',
+      specialties: ['河套面粉', '河套蜜瓜', '葵花籽', '牛羊肉'],
+      localCases: [
+        { name: '巴彦淖尔本地商家', result: '河套特产线上销售' }
+      ],
+      intro: '巴彦淖尔是河套平原的核心区域，被誉为"塞上江南"。河套面粉、蜜瓜、葵花籽等特产享誉全国。我们为巴彦淖尔的特产商家提供专业的电商化解决方案。'
+    },
+    {
+      slug: 'wuhai',
+      name: '乌海',
+      lat: '39.6554',
+      lng: '106.7955',
+      specialties: ['乌海葡萄', '沙漠特产', '葡萄酒', '餐饮'],
+      localCases: [
+        { name: '乌海本地商家', result: '餐饮门店数字化升级' }
+      ],
+      intro: '乌海是一座年轻的工业城市，也是葡萄种植的新兴产区。我们为乌海的餐饮、特产商家提供有赞数字化服务，助力本地商家转型升级。'
+    },
+    {
+      slug: 'xinganmeng',
+      name: '兴安盟',
+      lat: '46.0732',
+      lng: '122.0673',
+      specialties: ['兴安盟大米', '科尔沁右翼特产', '牛羊肉', '林产品'],
+      localCases: [
+        { name: '兴安盟本地商家', result: '大米品牌线上商城搭建' }
+      ],
+      intro: '兴安盟地处大兴安岭南麓，森林资源丰富，兴安盟大米品质优良。我们为兴安盟的农产品商家提供电商化解决方案，帮助优质农产品走向更广阔的市场。'
+    },
+    {
+      slug: 'xilinguole',
+      name: '锡林郭勒',
+      lat: '43.9334',
+      lng: '116.0489',
+      specialties: ['锡林郭勒羊肉', '草原特产', '牛羊肉', '奶制品'],
+      localCases: [
+        { name: '锡林郭勒本地商家', result: '羊肉线上预订与会员制销售' }
+      ],
+      intro: '锡林郭勒草原是世界四大草原之一，锡林郭勒羊肉是国家地理标志产品。我们为锡林郭勒的牛羊肉商家提供专业的线上销售解决方案，包括会员制、预售、冷链配送等。'
+    },
+    {
+      slug: 'alashan',
+      name: '阿拉善',
+      lat: '38.8479',
+      lng: '105.7283',
+      specialties: ['阿拉善肉苁蓉', '锁阳', '沙漠特产', '奇石'],
+      localCases: [
+        { name: '阿拉善本地商家', result: '特产电商化与私域运营' }
+      ],
+      intro: '阿拉善位于内蒙古最西端，以肉苁蓉、锁阳等沙漠特产闻名。我们为阿拉善的特产商家提供有赞小程序商城搭建服务，帮助珍稀特产开拓线上市场。'
+    }
+  ];
+
+  return cities.map(city => ({
+    params: { slug: city.slug },
+    props: { city }
+  }));
+}
+
+const { city } = Astro.props;
+const siteUrl = 'https://www.shark888.cn';
+
+const title = `${city.name}有赞服务商_小程序商城_门店数字化_私域运营_内蒙古神客科技`;
+const description = `${city.name}有赞官方授权服务商，提供有赞小程序商城搭建、门店数字化升级、会员私域运营服务。免费上门演示，咨询电话15652701682。深耕${city.specialties.join('、')}等行业。`;
+const keywords = `${city.name}有赞,有赞服务商,小程序商城,门店数字化,私域运营,有赞代理,${city.specialties.join(',')}`;
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  'itemListElement': [
+    { '@type': 'ListItem', 'position': 1, 'name': '首页', 'item': `${siteUrl}/` },
+    { '@type': 'ListItem', 'position': 2, 'name': '服务城市', 'item': `${siteUrl}/city/` },
+    { '@type': 'ListItem', 'position': 3, 'name': city.name, 'item': `${siteUrl}/city/${city.slug}/` }
+  ]
+};
+
+const localBusinessSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  'name': `有赞${city.name}服务中心`,
+  'description': `有赞官方授权${city.name}服务商，提供小程序商城、门店数字化、私域运营一站式服务`,
+  'url': `${siteUrl}/city/${city.slug}/`,
+  'telephone': '+86-15652701682',
+  'address': {
+    '@type': 'PostalAddress',
+    'addressLocality': city.name,
+    'addressRegion': '内蒙古自治区',
+    'addressCountry': 'CN'
+  },
+  'geo': {
+    '@type': 'GeoCoordinates',
+    'latitude': city.lat,
+    'longitude': city.lng
+  },
+  'areaServed': { '@type': 'City', 'name': city.name },
+  'parentOrganization': { '@id': `${siteUrl}/#organization` }
+};
+
+const services = [
+  { title: '有赞小程序商城', desc: `为${city.name}商家搭建微信商城、视频号小店，打通抖音、小红书本地生活，实现多平台同步经营。` },
+  { title: '门店数字化升级', desc: `智能收银、库存管理、扫码点单、外卖自提、同城配送，帮助${city.name}实体门店实现线上线下一体化。` },
+  { title: '会员私域运营', desc: `会员储值、积分、等级体系，企业微信互通，精准营销触达，让${city.name}商家老客户持续复购。` },
+  { title: '本地化上门服务', desc: `${city.name}本地团队，免费上门演示、一对一培训、7×12小时售后支持，资料齐全3-7天即可上线。` }
+];
+
+const allCities = ['呼和浩特', '包头', '赤峰', '通辽', '鄂尔多斯', '乌兰察布', '巴彦淖尔', '乌海', '兴安盟', '锡林郭勒', '阿拉善'];
+---
+
+<Layout title={title} description={description} keywords={keywords} schema={[breadcrumbSchema, localBusinessSchema]} canonical={`/city/${city.slug}/`}>
+  <Header />
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <nav aria-label="breadcrumb" class="breadcrumb">
+          <ol>
+            <li><a href="/">首页</a></li>
+            <li><a href="/city/">服务城市</a></li>
+            <li>{city.name}</li>
+          </ol>
+        </nav>
+        <h1>{city.name}有赞服务商</h1>
+        <p>小程序商城 · 门店数字化 · 私域运营 · 免费上门演示</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="city-intro">
+          <h2>{city.name}有赞官方授权服务商</h2>
+          <p>{city.intro}</p>
+          <p>服务电话：<a href="tel:15652701682">15652701682</a>（同微信） | 免费上门演示</p>
+        </div>
+
+        <h3 class="section-subtitle" style="margin-top:48px;margin-bottom:24px;font-size:1.4rem;font-weight:700;text-align:center;">我们在{city.name}提供的服务</h3>
+        <div class="card-grid">
+          {services.map(s => (
+            <div class="card">
+              <h4>{s.title}</h4>
+              <p>{s.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <h3 class="section-subtitle" style="margin-top:48px;margin-bottom:24px;font-size:1.4rem;font-weight:700;text-align:center;">{city.name}特色行业</h3>
+        <div class="specialty-grid">
+          {city.specialties.map(s => (
+            <div class="specialty-card">
+              <span class="specialty-icon">&#127807;</span>
+              <span>{s}</span>
+            </div>
+          ))}
+        </div>
+
+        {city.localCases.length > 0 && (
+          <>
+            <h3 class="section-subtitle" style="margin-top:48px;margin-bottom:24px;font-size:1.4rem;font-weight:700;text-align:center;">{city.name}本地客户案例</h3>
+            <div class="case-grid">
+              {city.localCases.map(c => (
+                <div class="case-card">
+                  <div class="case-name">{c.name}</div>
+                  <div class="case-result">{c.result}</div>
+                </div>
+              ))}
+            </div>
+          </>
+        )}
+
+        <h3 class="section-subtitle" style="margin-top:48px;margin-bottom:24px;font-size:1.4rem;font-weight:700;text-align:center;">为什么选择我们</h3>
+        <div class="why-grid">
+          <div class="why-item">
+            <strong>官方独家授权</strong>
+            <p>有赞官方授权的内蒙古地区独家服务商</p>
+          </div>
+          <div class="why-item">
+            <strong>本地化服务</strong>
+            <p>{city.name}本地团队，可安排上门服务</p>
+          </div>
+          <div class="why-item">
+            <strong>全流程交付</strong>
+            <p>开通—搭建—培训—运营—售后一条龙</p>
+          </div>
+          <div class="why-item">
+            <strong>价格透明</strong>
+            <p>无隐形收费，免费咨询报价</p>
+          </div>
+        </div>
+
+        <div class="nearby-cities">
+          <h4>其他服务城市</h4>
+          <div class="nearby-list">
+            {allCities.filter(c => c !== city.name).map(c => {
+              const slugMap: Record<string, string> = {
+                '呼和浩特': 'huhehaote', '包头': 'baotou', '赤峰': 'chifeng', '通辽': 'tongliao',
+                '鄂尔多斯': 'eerduosi', '乌兰察布': 'wulanchabu', '巴彦淖尔': 'bayannaoer',
+                '乌海': 'wuhai', '兴安盟': 'xinganmeng', '锡林郭勒': 'xilinguole', '阿拉善': 'alashan'
+              };
+              return <a href={`/city/${slugMap[c]}/`}>{c}</a>;
+            })}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <h2>立即获取免费方案</h2>
+        <p>拨打 <a href="tel:15652701682">15652701682</a>（同微信），预约{city.name}免费上门演示</p>
+        <div class="cta-buttons">
+          <a href="tel:15652701682" class="btn">电话咨询</a>
+          <a href="/contact/" class="btn btn-secondary">在线咨询</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+    padding: 48px 0 40px;
+  }
+  .breadcrumb ol {
+    display: flex;
+    list-style: none;
+    gap: 8px;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+  }
+  .breadcrumb a { color: rgba(255,255,255,0.7); }
+  .breadcrumb li:not(:last-child)::after {
+    content: '>';
+    margin-left: 8px;
+    color: rgba(255,255,255,0.4);
+  }
+  .page-hero h1 { font-size: 2.2rem; margin-bottom: 12px; }
+  .page-hero p { color: rgba(255,255,255,0.7); }
+  
+  .section { padding: 64px 0; }
+  
+  .city-intro {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .city-intro h2 { font-size: 1.8rem; margin-bottom: 16px; }
+  .city-intro p { margin-bottom: 12px; line-height: 1.8; }
+  .city-intro a { color: var(--primary); font-weight: 600; }
+  
+  .specialty-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .specialty-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 20px;
+    background: var(--bg-light);
+    border-radius: var(--radius);
+    font-weight: 600;
+  }
+  .specialty-icon { font-size: 1.5rem; }
+  
+  .case-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .case-card {
+    background: white;
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border-left: 3px solid var(--primary);
+  }
+  .case-name { font-weight: 700; margin-bottom: 4px; }
+  .case-result { font-size: 0.9rem; color: var(--text-light); }
+  
+  .why-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+  .why-item {
+    text-align: center;
+    padding: 24px;
+    background: var(--bg-light);
+    border-radius: var(--radius);
+  }
+  .why-item strong { display: block; margin-bottom: 8px; font-size: 1.1rem; }
+  .why-item p { color: var(--text-light); font-size: 0.9rem; }
+  
+  .nearby-cities {
+    margin-top: 48px;
+    padding-top: 32px;
+    border-top: 1px solid var(--border);
+  }
+  .nearby-cities h4 { margin-bottom: 16px; }
+  .nearby-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .nearby-list a {
+    padding: 8px 16px;
+    background: var(--bg-light);
+    border-radius: var(--radius);
+    font-size: 0.9rem;
+  }
+  .nearby-list a:hover {
+    background: var(--primary);
+    color: white;
+    text-decoration: none;
+  }
+  
+  .cta-section {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+  }
+  .cta-section h2 { font-size: 2.2rem; margin-bottom: 16px; }
+  .cta-section p { font-size: 1.1rem; margin-bottom: 32px; opacity: 0.9; }
+  .cta-section a { color: white; text-decoration: underline; }
+  .cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cta-section .btn {
+    background: white;
+    color: var(--primary);
+  }
+  .cta-section .btn:hover { background: var(--bg-light); }
+  .cta-section .btn-secondary {
+    background: transparent;
+    color: white;
+    border-color: white;
+  }
+  .cta-section .btn-secondary:hover {
+    background: white;
+    color: var(--primary);
+  }
+  
+  @media (max-width: 768px) {
+    .page-hero h1 { font-size: 1.6rem; }
+  }
+</style>

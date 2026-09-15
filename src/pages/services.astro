@@ -1,0 +1,305 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const title = '核心服务 | 有赞小程序商城·门店数字化·私域运营 - 有赞内蒙古运营中心';
+const description = '有赞内蒙古运营中心提供四大核心服务：有赞小程序商城搭建、门店数字化升级、会员私域运营、内蒙古本地专属服务。覆盖特产、牛羊肉、烘焙、酒水、母婴、美业、咖啡茶饮7大行业。';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  'itemListElement': [
+    { '@type': 'ListItem', 'position': 1, 'name': '首页', 'item': 'https://www.shark888.cn/' },
+    { '@type': 'ListItem', 'position': 2, 'name': '核心服务', 'item': 'https://www.shark888.cn/services/' }
+  ]
+};
+
+const services = [
+  {
+    icon: '&#128241;',
+    title: '有赞小程序商城',
+    subtitle: '一键开通多平台商城，全网卖货',
+    desc: '为内蒙古商家搭建微信小程序商城、视频号小店，打通抖音本地生活、小红书本地生活、支付宝小程序、百度小程序等多平台，实现一个后台管理多个渠道，商品、订单、会员数据实时同步。',
+    features: [
+      '微信小程序商城搭建与装修',
+      '视频号小店开通与带货',
+      '抖音本地生活接入',
+      '小红书本地生活开店',
+      '支付宝/百度小程序',
+      '商品上架与库存同步',
+      '订单管理与物流对接',
+      '营销活动配置（拼团/秒杀/优惠券）'
+    ],
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      '@id': 'https://www.shark888.cn/services#youzan-weapp',
+      'serviceType': '小程序商城搭建',
+      'provider': { '@id': 'https://www.shark888.cn/#organization' },
+      'name': '有赞小程序商城',
+      'description': '微信商城、视频号带货、抖音本地生活打通、小红书本地生活开店、线上开店、商品上架、店铺装修。帮助商家快速搭建多平台小程序商城，实现全网卖货。',
+      'areaServed': { '@type': 'AdministrativeArea', 'name': '内蒙古自治区' }
+    }
+  },
+  {
+    icon: '&#128187;',
+    title: '门店数字化升级',
+    subtitle: '智能收银+库存管理，线上线下一体化',
+    desc: '帮助实体门店实现全面数字化：智能收银系统、库存管理、多门店统一管理、扫码点单、外卖自提、同城配送。让门店经营更高效，顾客体验更流畅。',
+    features: [
+      '智能收银系统（支持多种硬件）',
+      '库存管理与预警',
+      '多门店统一管理',
+      '扫码点单（堂食/外带）',
+      '外卖自提与同城配送',
+      '会员储值与次卡',
+      '积分系统与等级体系',
+      '企业微信互通'
+    ],
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      '@id': 'https://www.shark888.cn/services#store-digital',
+      'serviceType': '门店数字化解决方案',
+      'provider': { '@id': 'https://www.shark888.cn/#organization' },
+      'name': '门店数字化升级',
+      'description': '门店收银、库存管理、多门店统一管理、扫码点单、外卖自提、同城配送。帮助实体门店实现线上线下一体化经营。',
+      'areaServed': { '@type': 'AdministrativeArea', 'name': '内蒙古自治区' }
+    }
+  },
+  {
+    icon: '&#128101;',
+    title: '会员私域运营',
+    subtitle: '沉淀客户资产，让老客持续复购',
+    desc: '搭建完整的私域运营体系：通过会员体系沉淀客户资产，利用企微助手连接导购与客户，借助智能CRM进行精准分层营销，配合拼团、秒杀、优惠券等营销工具提升复购率。我们服务过的客户复购率平均提升30%以上。',
+    features: [
+      '会员储值与充值赠送',
+      '积分系统与积分商城',
+      '会员等级与权益',
+      '企业微信助手',
+      '客户标签与分层',
+      '精准营销推送',
+      '拼团/秒杀/优惠券',
+      '数据分析与报表'
+    ],
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      '@id': 'https://www.shark888.cn/services#private-domain',
+      'serviceType': '私域运营服务',
+      'provider': { '@id': 'https://www.shark888.cn/#organization' },
+      'name': '会员私域运营',
+      'description': '会员储值、次卡、积分、等级、企业微信互通、老客户精准营销、提升复购。搭建完整的私域客户运营体系，让老客持续产生价值。',
+      'areaServed': { '@type': 'AdministrativeArea', 'name': '内蒙古自治区' }
+    }
+  },
+  {
+    icon: '&#127775;',
+    title: '内蒙古本地专属服务',
+    subtitle: '本地化团队，面对面服务',
+    desc: '我们是内蒙古本地团队，服务覆盖全内蒙11个城市，提供免费的上门演示、面对面培训、店铺搭建支持等服务。呼和浩特、包头、赤峰、通辽、鄂尔多斯等主要城市均可安排上门服务。',
+    features: [
+      '免费上门演示',
+      '一对一培训',
+      '店铺搭建与配置',
+      '7×12小时售后支持',
+      '营销活动策划',
+      '定期回访优化',
+      '紧急问题快速响应',
+      '长期陪跑服务'
+    ],
+    schema: {
+      '@context': 'https://schema.org',
+      '@type': 'Service',
+      '@id': 'https://www.shark888.cn/services#local-service',
+      'serviceType': '本地化上门支持',
+      'provider': { '@id': 'https://www.shark888.cn/#organization' },
+      'name': '内蒙古本地专属服务',
+      'description': '免费上门演示、一对一培训、店铺搭建上线、7×12小时售后支持。内蒙古本地团队，覆盖全内蒙11个城市。',
+      'areaServed': { '@type': 'AdministrativeArea', 'name': '内蒙古自治区' }
+    }
+  }
+];
+
+const industries = [
+  { name: '特产', cases: '牛肉干、奶制品、羊绒制品线上销售' },
+  { name: '牛羊肉', cases: '冷鲜肉、分割肉、礼盒装线上预订与配送' },
+  { name: '烘焙', cases: '蛋糕面包预售、会员储值、节日营销' },
+  { name: '酒水', cases: '白酒红酒精酿啤酒会员制销售' },
+  { name: '母婴', cases: '奶粉辅食用品私域会员运营' },
+  { name: '美业', cases: '美容美发美甲预约与会员管理' },
+  { name: '咖啡茶饮', cases: '扫码点单、积分兑换、社群营销' }
+];
+---
+
+<Layout title={title} description={description} schema={[breadcrumbSchema, ...services.map(s => s.schema)]}>
+  <Header />
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <nav aria-label="breadcrumb" class="breadcrumb">
+          <ol>
+            <li><a href="/">首页</a></li>
+            <li>核心服务</li>
+          </ol>
+        </nav>
+        <h1>四大核心服务</h1>
+        <p>从开店到运营，从获客到复购，全链路数字化解决方案</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        {services.map((s, i) => (
+          <div class="service-detail" id={s.title.replace(/\s/g, '-').toLowerCase()}>
+            <div class={`service-row ${i % 2 === 1 ? 'reverse' : ''}`}>
+              <div class="service-visual">
+                <div class="service-big-icon">{s.icon}</div>
+                <h2>{s.title}</h2>
+                <p class="service-subtitle">{s.subtitle}</p>
+              </div>
+              <div class="service-content">
+                <p class="service-desc">{s.desc}</p>
+                <ul class="feature-list">
+                  {s.features.map(f => <li>{f}</li>)}
+                </ul>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section class="section bg-light">
+      <div class="container">
+        <h2 class="section-title">7大深耕行业</h2>
+        <p class="section-subtitle">每个行业都有成熟的解决方案和标杆案例</p>
+        <div class="industry-table">
+          {industries.map(ind => (
+            <div class="industry-row">
+              <div class="industry-name">{ind.name}</div>
+              <div class="industry-cases">{ind.cases}</div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <h2>立即获取免费方案</h2>
+        <p>拨打 <a href="tel:15652701682">15652701682</a>（同微信），预约免费上门演示</p>
+        <div class="cta-buttons">
+          <a href="tel:15652701682" class="btn">电话咨询</a>
+          <a href="/contact/" class="btn btn-secondary">在线咨询</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+    padding: 48px 0 40px;
+  }
+  .breadcrumb ol {
+    display: flex;
+    list-style: none;
+    gap: 8px;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+  }
+  .breadcrumb a { color: rgba(255,255,255,0.7); }
+  .breadcrumb li:not(:last-child)::after {
+    content: '>';
+    margin-left: 8px;
+    color: rgba(255,255,255,0.4);
+  }
+  .page-hero h1 { font-size: 2.5rem; margin-bottom: 12px; }
+  .page-hero p { color: rgba(255,255,255,0.7); font-size: 1.1rem; }
+  
+  .section { padding: 64px 0; }
+  .bg-light { background: var(--bg-light); }
+  
+  .service-detail { margin-bottom: 64px; }
+  .service-detail:last-child { margin-bottom: 0; }
+  .service-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+    align-items: center;
+  }
+  .service-row.reverse { direction: rtl; }
+  .service-row.reverse > * { direction: ltr; }
+  .service-visual { text-align: center; }
+  .service-big-icon { font-size: 5rem; margin-bottom: 16px; }
+  .service-visual h2 { font-size: 1.8rem; margin-bottom: 8px; }
+  .service-subtitle { color: var(--text-light); font-size: 1.05rem; }
+  .service-desc { font-size: 1.05rem; margin-bottom: 24px; line-height: 1.8; }
+  .feature-list { list-style: none; }
+  .feature-list li {
+    padding: 10px 0;
+    padding-left: 28px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+  }
+  .feature-list li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-weight: 700;
+  }
+  
+  .industry-table { max-width: 800px; margin: 0 auto; }
+  .industry-row {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    gap: 24px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .industry-name { font-weight: 700; font-size: 1.1rem; }
+  .industry-cases { color: var(--text-light); }
+  
+  .cta-section {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+  }
+  .cta-section h2 { font-size: 2.2rem; margin-bottom: 16px; }
+  .cta-section p { font-size: 1.1rem; margin-bottom: 32px; opacity: 0.9; }
+  .cta-section a { color: white; text-decoration: underline; }
+  .cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cta-section .btn {
+    background: white;
+    color: var(--primary);
+  }
+  .cta-section .btn:hover { background: var(--bg-light); }
+  .cta-section .btn-secondary {
+    background: transparent;
+    color: white;
+    border-color: white;
+  }
+  .cta-section .btn-secondary:hover {
+    background: white;
+    color: var(--primary);
+  }
+  
+  @media (max-width: 768px) {
+    .service-row { grid-template-columns: 1fr; gap: 32px; }
+    .service-row.reverse { direction: ltr; }
+    .page-hero h1 { font-size: 1.8rem; }
+    .industry-row { grid-template-columns: 1fr; gap: 4px; }
+  }
+</style>

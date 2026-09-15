@@ -1,0 +1,235 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+
+const title = '知识中心 | 有赞内蒙古运营中心 - 数字化经营干货';
+const description = '有赞内蒙古运营中心知识中心，分享小程序商城搭建、门店数字化升级、会员私域运营等实操干货。覆盖内蒙古11个城市、7大行业的数字化经营指南。';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  'itemListElement': [
+    { '@type': 'ListItem', 'position': 1, 'name': '首页', 'item': 'https://www.shark888.cn/' },
+    { '@type': 'ListItem', 'position': 2, 'name': '知识中心', 'item': 'https://www.shark888.cn/blog/' }
+  ]
+};
+
+const posts = [
+  {
+    slug: 'huhehaote-youzan-service',
+    title: '呼和浩特有赞服务商哪家好？官方授权代理商怎么找',
+    excerpt: '呼和浩特地区有赞服务商选择指南。了解如何识别官方授权代理商，以及选择服务商时需要关注的核心要素。',
+    category: '城市×产品',
+    date: '2026-09-01'
+  },
+  {
+    slug: 'baotou-youzan-price',
+    title: '包头有赞小程序商城搭建多少钱？2026年最新报价',
+    excerpt: '包头地区有赞小程序商城搭建费用详解。不同版本套餐对比，以及选择适合自己业务场景的版本的实用建议。',
+    category: '城市×产品',
+    date: '2026-09-03'
+  },
+  {
+    slug: 'chifeng-baking-membership',
+    title: '赤峰烘焙店如何用有赞做会员储值和积分营销',
+    excerpt: '赤峰烘焙店数字化经营实操指南。从会员体系搭建到储值活动设计，再到积分营销玩法的完整方案。',
+    category: '城市×产品',
+    date: '2026-09-05'
+  },
+  {
+    slug: 'tongliao-specialty-weapp',
+    title: '通辽特产店怎么开通微信小程序卖货',
+    excerpt: '通辽特产店开通微信小程序的完整流程。从资料准备到店铺上线，手把手教您快速开通自己的线上商城。',
+    category: '城市×产品',
+    date: '2026-09-07'
+  },
+  {
+    slug: 'eerduosi-beef-private-domain',
+    title: '鄂尔多斯牛羊肉商家如何做私域运营提升复购',
+    excerpt: '鄂尔多斯牛羊肉商家私域运营实战方案。会员体系、社群运营、精准营销三位一体的复购提升策略。',
+    category: '城市×产品',
+    date: '2026-09-08'
+  },
+  {
+    slug: 'neimenggu-specialty-private-domain',
+    title: '内蒙古特产店如何做私域会员运营？5个实操步骤',
+    excerpt: '内蒙古特产店私域会员运营方法论。从引流到沉淀，从激活到复购，5个步骤搭建完整的私域运营体系。',
+    category: '行业×解决方案',
+    date: '2026-09-10'
+  },
+  {
+    slug: 'beef-cold-chain',
+    title: '牛羊肉门店用有赞做预售和冷链配送的完整方案',
+    excerpt: '牛羊肉门店数字化经营完整方案。预售模式设计、冷链配送对接、品质保障机制的搭建方法。',
+    category: '行业×解决方案',
+    date: '2026-09-12'
+  },
+  {
+    slug: 'baking-membership-campaign',
+    title: '烘焙店会员储值活动怎么做？3个有赞营销玩法',
+    excerpt: '烘焙店会员储值活动设计指南。充值赠送、储值返现、阶梯奖励三种玩法的具体实施方案。',
+    category: '行业×解决方案',
+    date: '2026-09-14'
+  },
+  {
+    slug: 'youzan-weapp-process',
+    title: '有赞小程序商城开通流程：从注册到上线需要几天',
+    excerpt: '有赞小程序商城开通全流程解析。每个环节需要多长时间，需要准备什么资料，常见问题如何解决。',
+    category: '产品×功能科普',
+    date: '2026-09-15'
+  },
+  {
+    slug: 'youzan-douyin-xiaohongshu',
+    title: '有赞能打通抖音和小红书吗？多平台经营实操',
+    excerpt: '有赞多平台经营功能详解。抖音本地生活、小红书本地生活的接入方法和运营技巧。',
+    category: '产品×功能科普',
+    date: '2026-09-15'
+  }
+];
+---
+
+<Layout title={title} description={description} schema={breadcrumbSchema}>
+  <Header />
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <nav aria-label="breadcrumb" class="breadcrumb">
+          <ol>
+            <li><a href="/">首页</a></li>
+            <li>知识中心</li>
+          </ol>
+        </nav>
+        <h1>知识中心</h1>
+        <p>分享数字化经营干货，助力内蒙古实体商家转型升级</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="post-grid">
+          {posts.map(post => (
+            <a href={`/blog/${post.slug}/`} class="post-card">
+              <div class="post-meta">
+                <span class="post-category">{post.category}</span>
+                <span class="post-date">{post.date}</span>
+              </div>
+              <h3>{post.title}</h3>
+              <p>{post.excerpt}</p>
+              <span class="read-more">阅读全文 &rarr;</span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <div class="container">
+        <h2>需要一对一咨询？</h2>
+        <p>拨打 <a href="tel:15652701682">15652701682</a>（同微信），获取专属数字化升级方案</p>
+        <div class="cta-buttons">
+          <a href="tel:15652701682" class="btn">电话咨询</a>
+          <a href="/contact/" class="btn btn-secondary">在线咨询</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+    padding: 48px 0 40px;
+  }
+  .breadcrumb ol {
+    display: flex;
+    list-style: none;
+    gap: 8px;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+  }
+  .breadcrumb a { color: rgba(255,255,255,0.7); }
+  .breadcrumb li:not(:last-child)::after {
+    content: '>';
+    margin-left: 8px;
+    color: rgba(255,255,255,0.4);
+  }
+  .page-hero h1 { font-size: 2.5rem; margin-bottom: 12px; }
+  .page-hero p { color: rgba(255,255,255,0.7); }
+  
+  .section { padding: 64px 0; }
+  
+  .post-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+  }
+  .post-card {
+    display: block;
+    background: white;
+    padding: 28px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    color: var(--text);
+    transition: all 0.3s;
+  }
+  .post-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
+    text-decoration: none;
+  }
+  .post-meta {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 0.85rem;
+  }
+  .post-category {
+    padding: 2px 10px;
+    background: rgba(255,77,79,0.1);
+    color: var(--primary);
+    border-radius: 12px;
+    font-weight: 500;
+  }
+  .post-date { color: var(--text-light); }
+  .post-card h3 { font-size: 1.15rem; margin-bottom: 8px; line-height: 1.4; }
+  .post-card p { color: var(--text-light); font-size: 0.95rem; line-height: 1.6; margin-bottom: 12px; }
+  .read-more { color: var(--primary); font-weight: 600; font-size: 0.9rem; }
+  
+  .cta-section {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: white;
+    padding: 80px 0;
+    text-align: center;
+  }
+  .cta-section h2 { font-size: 2.2rem; margin-bottom: 16px; }
+  .cta-section p { font-size: 1.1rem; margin-bottom: 32px; opacity: 0.9; }
+  .cta-section a { color: white; text-decoration: underline; }
+  .cta-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cta-section .btn {
+    background: white;
+    color: var(--primary);
+  }
+  .cta-section .btn:hover { background: var(--bg-light); }
+  .cta-section .btn-secondary {
+    background: transparent;
+    color: white;
+    border-color: white;
+  }
+  .cta-section .btn-secondary:hover {
+    background: white;
+    color: var(--primary);
+  }
+  
+  @media (max-width: 768px) {
+    .page-hero h1 { font-size: 1.8rem; }
+    .post-grid { grid-template-columns: 1fr; }
+  }
+</style>

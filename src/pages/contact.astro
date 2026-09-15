@@ -1,0 +1,196 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+const title = '联系我们 | 有赞内蒙古运营中心 - 电话15652701682';
+const description = '联系有赞内蒙古运营中心，获取免费咨询服务。电话：15652701682（同微信）。地址：呼和浩特市赛罕区金桥电子商务产业园3楼326。';
+
+const contactSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'ContactPage',
+  '@id': 'https://www.shark888.cn/contact/#contactpage',
+  'url': 'https://www.shark888.cn/contact/',
+  'name': '联系我们 - 有赞内蒙古运营中心',
+  'description': '联系有赞内蒙古运营中心，获取免费咨询服务。电话：15652701682（同微信）。',
+  'mainEntity': { '@id': 'https://www.shark888.cn/#organization' }
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  'itemListElement': [
+    { '@type': 'ListItem', 'position': 1, 'name': '首页', 'item': 'https://www.shark888.cn/' },
+    { '@type': 'ListItem', 'position': 2, 'name': '联系我们', 'item': 'https://www.shark888.cn/contact/' }
+  ]
+};
+---
+
+<Layout title={title} description={description} schema={[contactSchema, breadcrumbSchema]}>
+  <Header />
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <nav aria-label="breadcrumb" class="breadcrumb">
+          <ol>
+            <li><a href="/">首页</a></li>
+            <li>联系我们</li>
+          </ol>
+        </nav>
+        <h1>联系我们</h1>
+        <p>有任何问题，欢迎随时联系我们</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-info">
+            <h2>联系方式</h2>
+            <div class="contact-item">
+              <div class="contact-icon">&#9742;</div>
+              <div>
+                <h3>电话咨询</h3>
+                <p><a href="tel:15652701682">15652701682</a>（同微信）</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">&#9993;</div>
+              <div>
+                <h3>电子邮箱</h3>
+                <p>1663526639@qq.com</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">&#127968;</div>
+              <div>
+                <h3>公司地址</h3>
+                <p>呼和浩特市赛罕区金桥电子商务产业园3楼326</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">&#128338;</div>
+              <div>
+                <h3>服务时间</h3>
+                <p>周一至周日 09:00 - 21:00</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">&#127760;</div>
+              <div>
+                <h3>官方网站</h3>
+                <p><a href="https://www.shark888.cn">www.shark888.cn</a></p>
+              </div>
+            </div>
+            
+            <div class="contact-cities">
+              <h3>服务覆盖城市</h3>
+              <div class="city-tags">
+                {['呼和浩特', '包头', '赤峰', '通辽', '鄂尔多斯', '乌兰察布', '巴彦淖尔', '乌海', '兴安盟', '锡林郭勒', '阿拉善'].map(c => (
+                  <span class="city-tag">{c}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+          
+          <div class="contact-cta">
+            <div class="cta-box">
+              <h3>立即获取免费方案</h3>
+              <p>留下您的联系方式，我们将在30分钟内与您联系，为您量身定制数字化升级方案。</p>
+              <a href="tel:15652701682" class="btn">拨打 15652701682</a>
+              <p class="cta-note">或添加微信：15652701682</p>
+            </div>
+            <div class="cta-box cta-box-alt">
+              <h3>免费上门演示</h3>
+              <p>呼和浩特、包头、赤峰、通辽、鄂尔多斯等主要城市均可安排上门服务。</p>
+              <a href="tel:15652701682" class="btn btn-secondary">预约上门演示</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .page-hero {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: white;
+    padding: 48px 0 40px;
+  }
+  .breadcrumb ol {
+    display: flex;
+    list-style: none;
+    gap: 8px;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+  }
+  .breadcrumb a { color: rgba(255,255,255,0.7); }
+  .breadcrumb li:not(:last-child)::after {
+    content: '>';
+    margin-left: 8px;
+    color: rgba(255,255,255,0.4);
+  }
+  .page-hero h1 { font-size: 2.5rem; margin-bottom: 12px; }
+  .page-hero p { color: rgba(255,255,255,0.7); }
+  
+  .section { padding: 64px 0; }
+  
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 64px;
+  }
+  .contact-info h2 { font-size: 1.8rem; margin-bottom: 32px; }
+  .contact-item {
+    display: flex;
+    gap: 16px;
+    padding: 20px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .contact-icon {
+    width: 48px;
+    height: 48px;
+    background: var(--bg-light);
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
+  .contact-item h3 { font-size: 1rem; margin-bottom: 4px; }
+  .contact-item p { color: var(--text-light); }
+  
+  .contact-cities { margin-top: 32px; }
+  .contact-cities h3 { margin-bottom: 16px; }
+  .city-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .city-tag {
+    padding: 6px 14px;
+    background: var(--bg-light);
+    border-radius: 20px;
+    font-size: 0.9rem;
+  }
+  
+  .contact-cta { display: flex; flex-direction: column; gap: 24px; }
+  .cta-box {
+    background: var(--bg-light);
+    padding: 32px;
+    border-radius: var(--radius);
+    text-align: center;
+  }
+  .cta-box h3 { margin-bottom: 12px; }
+  .cta-box p { color: var(--text-light); margin-bottom: 24px; }
+  .cta-note { font-size: 0.85rem; margin-top: 12px; margin-bottom: 0 !important; }
+  .cta-box-alt { background: white; box-shadow: var(--shadow); }
+  
+  @media (max-width: 768px) {
+    .contact-grid { grid-template-columns: 1fr; gap: 32px; }
+    .page-hero h1 { font-size: 1.8rem; }
+  }
+</style>

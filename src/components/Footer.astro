@@ -1,0 +1,108 @@
+---
+const cities = ['呼和浩特', '包头', '赤峰', '通辽', '鄂尔多斯', '乌兰察布', '巴彦淖尔', '乌海', '兴安盟', '锡林郭勒', '阿拉善'];
+const industries = ['特产', '牛羊肉', '烘焙', '酒水', '母婴', '美业', '咖啡茶饮'];
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>有赞内蒙古运营中心</h3>
+        <p>内蒙古神客科技有限公司</p>
+        <p class="footer-desc">有赞官方授权的内蒙古地区独家服务商，服务全内蒙11个城市，已助力300+本地商家实现数字化转型。</p>
+        <div class="footer-contact">
+          <p><strong>电话：</strong><a href="tel:15652701682">15652701682</a>（同微信）</p>
+          <p><strong>邮箱：</strong>1663526639@qq.com</p>
+          <p><strong>地址：</strong>呼和浩特市赛罕区金桥电子商务产业园3楼326</p>
+        </div>
+      </div>
+      
+      <div class="footer-links">
+        <h4>核心服务</h4>
+        <ul>
+          <li><a href="/services/">有赞小程序商城</a></li>
+          <li><a href="/services/">门店数字化升级</a></li>
+          <li><a href="/services/">会员私域运营</a></li>
+          <li><a href="/services/">内蒙古本地专属服务</a></li>
+        </ul>
+      </div>
+      
+      <div class="footer-links">
+        <h4>服务城市</h4>
+        <ul class="city-list">
+          {cities.map(city => (
+            <li><a href={`/city/${city === '呼和浩特' ? 'huhehaote' : city === '包头' ? 'baotou' : city === '赤峰' ? 'chifeng' : city === '通辽' ? 'tongliao' : city === '鄂尔多斯' ? 'eerduosi' : city === '乌兰察布' ? 'wulanchabu' : city === '巴彦淖尔' ? 'bayannaoer' : city === '乌海' ? 'wuhai' : city === '兴安盟' ? 'xinganmeng' : city === '锡林郭勒' ? 'xilinguole' : 'alashan'}/`}>{city}</a></li>
+          ))}
+        </ul>
+      </div>
+      
+      <div class="footer-links">
+        <h4>深耕行业</h4>
+        <ul>
+          {industries.map(ind => (
+            <li><a href="/services/">{ind}</a></li>
+          ))}
+        </ul>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>&copy; 2015-{new Date().getFullYear()} 内蒙古神客科技有限公司 版权所有 | <a href="/">www.shark888.cn</a></p>
+      <p class="footer-icp">有赞官方授权内蒙古独家服务商 | 服务电话：15652701682</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--bg-dark);
+    color: rgba(255,255,255,0.7);
+    padding: 64px 0 24px;
+  }
+  .site-footer a { color: rgba(255,255,255,0.7); }
+  .site-footer a:hover { color: white; }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    margin-bottom: 48px;
+  }
+  .footer-brand h3 {
+    color: white;
+    font-size: 1.3rem;
+    margin-bottom: 8px;
+  }
+  .footer-brand p { margin-bottom: 4px; }
+  .footer-desc {
+    margin: 16px 0;
+    line-height: 1.8;
+  }
+  .footer-contact { margin-top: 16px; }
+  .footer-contact p { margin-bottom: 6px; }
+  .footer-links h4 {
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 16px;
+  }
+  .footer-links ul { list-style: none; }
+  .footer-links li { margin-bottom: 8px; }
+  .city-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 12px;
+  }
+  .footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 24px;
+    text-align: center;
+    font-size: 0.85rem;
+  }
+  .footer-icp { margin-top: 8px; color: rgba(255,255,255,0.5); }
+  
+  @media (max-width: 768px) {
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+    }
+  }
+</style>
