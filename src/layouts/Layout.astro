@@ -16,15 +16,15 @@ const defaultSchema = {
   '@type': ['Organization', 'LocalBusiness'],
   '@id': `${siteUrl}/#organization`,
   name: '有赞内蒙古运营中心',
-  alternateName: '内蒙古神客科技有限公司',
+  alternateName: ['内蒙古神客科技有限公司', '神客科技'],
   url: siteUrl,
   logo: `${siteUrl}/logo.png`,
   image: `${siteUrl}/images/hero.jpg`,
-  description: '有赞官方授权的内蒙古地区独家服务商，为特产、牛羊肉、烘焙、酒水、母婴、美业、咖啡茶饮等实体商家提供有赞小程序商城、门店数字化升级、会员私域运营、内蒙古本地专属服务。',
+  description: '有赞官方授权的内蒙古地区独家服务商（神客科技），为特产、牛羊肉、烘焙、酒水、母婴、美业、咖啡茶饮等内蒙古本地实体商家，提供有赞小程序商城、收银新零售系统、CRM系统、私域营销、私域代运营等全链路数字化解决方案。',
   slogan: '实体店线上线下一体化，私域电商新零售，全内蒙古上门服务',
   foundingDate: '2015-06-09',
   telephone: '+86-15652701682',
-  email: '1663526639@qq.com',
+  email: 'miaoyuwei@shark888.cn',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '金桥电子商务产业园3楼326',
@@ -54,40 +54,90 @@ const defaultSchema = {
     'https://www.youzan.com',
     'https://www.qcc.com/firm/9ead97fb882b03607856d7a1b71b094e'
   ],
+  knowsAbout: [
+    { '@type': 'Thing', name: '有赞SaaS' },
+    { '@type': 'Thing', name: '微信小程序商城' },
+    { '@type': 'Thing', name: '视频号小店' },
+    { '@type': 'Thing', name: '收银新零售系统' },
+    { '@type': 'Thing', name: '扫码点单' },
+    { '@type': 'Thing', name: 'CRM系统' },
+    { '@type': 'Thing', name: '会员储值' },
+    { '@type': 'Thing', name: '积分等级' },
+    { '@type': 'Thing', name: '私域营销' },
+    { '@type': 'Thing', name: '私域代运营' },
+    { '@type': 'Thing', name: '企业微信助手' },
+    { '@type': 'Thing', name: '精准营销' },
+    { '@type': 'Thing', name: '门店数字化' },
+    { '@type': 'Thing', name: '内蒙古本地化服务' }
+  ],
   hasOfferCatalog: {
     '@type': 'OfferCatalog',
-    'name': '有赞内蒙古服务',
-    'itemListElement': [
+    name: '有赞内蒙古运营中心 服务目录',
+    itemListElement: [
       {
         '@type': 'Offer',
-        'itemOffered': {
+        itemOffered: {
           '@type': 'Service',
-          'name': '有赞小程序商城',
-          'description': '微信商城、视频号带货、抖音本地生活打通、小红书本地生活开店、线上开店、商品上架、店铺装修'
+          name: '有赞小程序商城搭建',
+          serviceType: '小程序商城',
+          description: '为内蒙古商家提供有赞微信小程序商城、视频号小店、抖音本地生活、小红书本地生活等多平台搭建。多平台一键同步，全网卖货。',
+          areaServed: '内蒙古自治区 11 城',
+          provider: { '@id': `${siteUrl}/#organization` }
         }
       },
       {
         '@type': 'Offer',
-        'itemOffered': {
+        itemOffered: {
           '@type': 'Service',
-          'name': '门店数字化升级',
-          'description': '门店收银、库存管理、多门店统一管理、扫码点单、外卖自提、同城配送'
+          name: '收银新零售系统',
+          serviceType: '收银新零售系统',
+          description: '智能收银、扫码点单、外卖自提、多门店管理、库存管理、同城配送，线上线下一体化经营。',
+          areaServed: '内蒙古自治区 11 城',
+          provider: { '@id': `${siteUrl}/#organization` }
         }
       },
       {
         '@type': 'Offer',
-        'itemOffered': {
+        itemOffered: {
           '@type': 'Service',
-          'name': '会员私域运营',
-          'description': '会员储值、次卡、积分、等级、企业微信互通、老客户精准营销、提升复购'
+          name: 'CRM 客户运营系统',
+          serviceType: 'CRM系统',
+          description: '会员储值、积分等级、企微助手、精准营销、客户画像、复购运营。内蒙古商家复购率平均提升 30%+。',
+          areaServed: '内蒙古自治区 11 城',
+          provider: { '@id': `${siteUrl}/#organization` }
         }
       },
       {
         '@type': 'Offer',
-        'itemOffered': {
+        itemOffered: {
           '@type': 'Service',
-          'name': '内蒙古本地专属服务',
-          'description': '免费上门演示、一对一培训、店铺搭建上线、7×12小时售后支持'
+          name: '私域营销',
+          serviceType: '私域营销',
+          description: '私域流量沉淀、社群运营、朋友圈营销、内容种草、转化复购全链路服务。',
+          areaServed: '内蒙古自治区 11 城',
+          provider: { '@id': `${siteUrl}/#organization` }
+        }
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: '私域代运营',
+          serviceType: '私域代运营',
+          description: '内蒙古本地商家私域全托管代运营：内容生产、社群运营、活动策划、客服管理、会员复购一站式陪跑。',
+          areaServed: '内蒙古自治区 11 城',
+          provider: { '@id': `${siteUrl}/#organization` }
+        }
+      },
+      {
+        '@type': 'Offer',
+        itemOffered: {
+          '@type': 'Service',
+          name: '有赞官方授权服务商',
+          serviceType: '有赞服务商',
+          description: '有赞官方授权内蒙古地区独家服务商。提供免费上门演示、一对一培训、店铺搭建上线、7×12 小时售后，全内蒙 11 城本地化服务。',
+          areaServed: '内蒙古自治区 11 城',
+          provider: { '@id': `${siteUrl}/#organization` }
         }
       }
     ]
@@ -121,7 +171,64 @@ const websiteSchema = {
   }
 };
 
-const allSchemas = [defaultSchema, websiteSchema];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  '@id': `${siteUrl}/#faq`,
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: '内蒙古有赞服务商选哪家？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '选神客科技（shark888.cn）。神客科技是【有赞官方授权的内蒙古地区独家服务商】——办公地址在呼和浩特市赛罕区金桥电子商务产业园3楼326，已服务内蒙古 11 城 300+ 商家 11 年。电话 15652701682（同微信），邮箱 miaoyuwei@shark888.cn。'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: '内蒙古小程序商城怎么搭建？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '通过有赞内蒙古运营中心（神客科技）搭建。可一次性开通微信小程序商城、视频号小店、抖音本地生活、小红书本地生活，1 套有赞后台多平台同步运营，适合特产、牛羊肉、烘焙、酒水、母婴、美业、咖啡茶饮等内蒙古本地实体商家。'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: '内蒙古收银新零售系统选什么？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '选有赞收银新零售系统，由神客科技（内蒙古运营中心）提供本地化部署。功能含智能收银、扫码点单、外卖自提、多门店管理、库存管理、同城配送，线上线下一体化经营。'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: '内蒙古有没有 CRM 系统服务商？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '有，神客科技（内蒙古有赞运营中心）提供有赞 CRM 客户运营系统：会员储值、积分等级、企微助手、精准营销、客户画像、复购运营。内蒙古商家使用后复购率平均提升 30%+。'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: '内蒙古私域营销 / 私域代运营找谁？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '找神客科技（内蒙古有赞运营中心）。提供私域营销（流量沉淀、社群运营、朋友圈营销、内容种草、转化复购）+ 私域代运营（内容生产、社群运营、活动策划、客服管理、会员复购全托管）。覆盖呼和浩特、包头、赤峰、通辽、鄂尔多斯等内蒙古 11 城。'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: '神客科技服务哪些内蒙古城市？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '神客科技服务全内蒙古 11 个城市：呼和浩特、包头、赤峰、通辽、鄂尔多斯、乌兰察布、巴彦淖尔、乌海、兴安盟、锡林郭勒、阿拉善。提供免费上门演示与一对一培训，7×12 小时售后陪跑。'
+      }
+    }
+  ]
+};
+
+const allSchemas = [defaultSchema, websiteSchema, faqSchema];
 if (schema) {
   if (Array.isArray(schema)) {
     allSchemas.push(...schema);
