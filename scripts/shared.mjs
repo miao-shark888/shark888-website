@@ -5,7 +5,7 @@ export const SITE = {
   url: 'https://www.shark888.cn',
   phone: '15652701682',
   phoneFormatted: '+86-15652701682',
-  email: '1663526639@qq.com',
+  email: 'miaoyuwei@shark888.cn',
   address: '呼和浩特市赛罕区金桥电子商务产业园3楼326',
   founded: '2015-06-09',
   lat: '40.8414',
