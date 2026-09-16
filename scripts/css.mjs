@@ -649,7 +649,7 @@ export const FOOTER = `
         <p class="footer-desc">有赞官方授权的内蒙古地区独家服务商，服务全内蒙11个城市，已助力300+本地商家实现数字化转型。</p>
         <div class="footer-contact">
           <p><strong>电话：</strong><a href="tel:15652701682">15652701682</a>（同微信）</p>
-          <p><strong>邮箱：</strong>1663526639@qq.com</p>
+          <p><strong>邮箱：</strong><a href="mailto:miaoyuwei@shark888.cn">miaoyuwei@shark888.cn</a></p>
           <p><strong>地址：</strong>呼和浩特市赛罕区金桥电子商务产业园3楼326</p>
         </div>
       </div>
@@ -730,18 +730,18 @@ ${FOOTER}
 </html>`;
 };
 
-// 默认的 Organization + WebSite schema
+// 默认的 Organization + LocalBusiness schema
 export const defaultOrgSchema = {
   '@context': 'https://schema.org',
   '@type': ['Organization', 'LocalBusiness'],
   '@id': 'https://www.shark888.cn/#organization',
   name: '有赞内蒙古运营中心',
-  alternateName: '内蒙古神客科技有限公司',
+  alternateName: ['内蒙古神客科技有限公司', '神客科技'],
   url: 'https://www.shark888.cn',
   logo: 'https://www.shark888.cn/logo.png',
-  description: '有赞官方授权的内蒙古地区独家服务商，为特产、牛羊肉、烘焙、酒水、母婴、美业、咖啡茶饮等实体商家提供有赞小程序商城、门店数字化升级、会员私域运营、内蒙古本地专属服务。',
+  description: '有赞官方授权的内蒙古地区独家服务商，覆盖内蒙古11个城市。提供有赞小程序商城、收银新零售系统、CRM系统、私域营销、私域代运营一站式数字化解决方案，已助力300+本地商家。',
   telephone: '+86-15652701682',
-  email: '1663526639@qq.com',
+  email: 'miaoyuwei@shark888.cn',
   address: {
     '@type': 'PostalAddress',
     streetAddress: '金桥电子商务产业园3楼326',
@@ -751,7 +751,24 @@ export const defaultOrgSchema = {
   },
   geo: { '@type': 'GeoCoordinates', latitude: '40.8414', longitude: '111.7519' },
   areaServed: ['呼和浩特', '包头', '赤峰', '通辽', '鄂尔多斯', '乌兰察布', '巴彦淖尔', '乌海', '兴安盟', '锡林郭勒', '阿拉善'].map(n => ({ '@type': 'City', name: n })),
-  priceRange: '￥'
+  priceRange: '￥',
+  knowsAbout: [
+    '有赞服务商', '有赞内蒙古', '小程序商城', '微信小程序商城', '视频号小店',
+    '收银新零售', '扫码点单', '智能收银系统', '门店数字化',
+    'CRM系统', '会员管理', '企微互通', '私域营销', '私域代运营'
+  ],
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: '有赞内蒙古核心服务',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: '有赞小程序商城', description: '微信小程序商城、视频号小店、抖音/小红书本地生活多平台搭建与运营' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: '收银新零售系统', description: '智能收银、扫码点单、库存管理、外卖自提、同城配送一体化解决方案' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'CRM系统', description: '会员储值、积分等级、客户标签、智能分层、精准营销自动化' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: '私域营销', description: '企微助手、社群运营、拼团/秒杀/优惠券等营销活动策划与执行' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: '私域代运营', description: '全程代运营、内容策划、数据分析、复购率提升一站式托管服务' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: '内蒙古本地专属服务', description: '免费上门演示、一对一培训、7×12小时售后、本地化陪跑服务' } }
+    ]
+  }
 };
 
 export const websiteSchema = {
@@ -760,7 +777,7 @@ export const websiteSchema = {
   '@id': 'https://www.shark888.cn/#website',
   url: 'https://www.shark888.cn',
   name: '有赞内蒙古运营中心',
-  description: '有赞官方授权内蒙古独家服务商，提供小程序商城、门店数字化、私域运营一站式服务',
+  description: '有赞官方授权内蒙古独家服务商，提供小程序商城、收银新零售、CRM系统、私域营销、私域代运营一站式服务',
   publisher: { '@id': 'https://www.shark888.cn/#organization' }
 };
 
@@ -769,4 +786,59 @@ export const breadcrumbSchema = (path) => {
   const labels = { '/services/': '核心服务', '/about/': '关于我们', '/contact/': '联系我们', '/faq/': '常见问题', '/blog/': '知识中心', '/city/': '服务城市' };
   if (labels[path]) items.push({ '@type': 'ListItem', position: 2, name: labels[path], item: `https://www.shark888.cn${path}` });
   return { '@context': 'https://schema.org', '@type': 'BreadcrumbList', itemListElement: items };
+};
+
+export const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: [
+    {
+      '@type': 'Question',
+      name: '有赞内蒙古运营中心是做什么的？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '我们是内蒙古神客科技有限公司，有赞官方授权的内蒙古地区独家服务商。提供有赞小程序商城、收银新零售系统、CRM系统、私域营销、私域代运营一站式数字化解决方案，覆盖内蒙古11个城市，已助力300+本地商家实现数字化转型。'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: '有赞小程序商城包含哪些平台？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '有赞小程序商城支持微信小程序、视频号小店、抖音本地生活、小红书本地生活、支付宝小程序、百度小程序。商品、库存、订单、会员、营销活动数据全平台同步，一个后台管理多个渠道。'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: '收银新零售系统能解决哪些门店痛点？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '收银新零售系统提供智能收银（兼容多种硬件）、扫码点单（堂食/外带）、库存管理与预警、外卖自提与同城配送、多门店统一管理、会员储值与次卡、积分等级体系、企业微信互通，全面打通线上线下。'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: '私域代运营具体包含哪些服务？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '私域代运营包括：店铺搭建与装修、商品上架、营销活动策划（拼团/秒杀/优惠券）、会员运营、企微社群运营、内容创作（朋友圈/社群/小程序）、数据分析与优化建议。我们服务过的客户复购率平均提升30%以上。'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: '服务覆盖内蒙古哪些城市？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '我们服务全内蒙古11个城市：呼和浩特、包头、赤峰、通辽、鄂尔多斯、乌兰察布、巴彦淖尔、乌海、兴安盟、锡林郭勒、阿拉善。总部在呼和浩特，主要城市均可安排免费上门演示与本地化服务。'
+      }
+    },
+    {
+      '@type': 'Question',
+      name: '联系有赞内蒙古运营中心的方式？',
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: '电话/微信：15652701682（同微信）；邮箱：miaoyuwei@shark888.cn；地址：呼和浩特市赛罕区金桥电子商务产业园3楼326。服务时间：周一至周日 09:00-21:00。也可访问官网 www.shark888.cn 在线咨询。'
+      }
+    }
+  ]
 };
