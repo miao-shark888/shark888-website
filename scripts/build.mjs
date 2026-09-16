@@ -54,19 +54,19 @@ const breadcrumbBlog = (slug, title) => `<nav aria-label="breadcrumb" class="bre
 // ========== 首页 ==========
 function buildIndex() {
   const title = '有赞内蒙古运营中心 | 有赞官方授权独家服务商 - 小程序商城·门店数字化·私域运营';
-  const description = '有赞官方授权的内蒙古地区独家服务商，服务全内蒙11个城市。提供有赞小程序商城搭建、门店数字化升级、会员私域运营一站式服务。已服务300+本地商家，免费上门演示，电话15652701682。';
+  const description = '有赞官方授权的内蒙古地区独家服务商，服务全内蒙12个盟市。提供有赞小程序商城搭建、门店数字化升级、会员私域运营一站式服务。已服务300+本地商家，免费上门演示，电话15652701682。';
   const keywords = '有赞内蒙古,有赞服务商,有赞代理商,小程序商城,门店数字化,私域运营,呼和浩特有赞';
 
   const services = [
     { icon: '&#128241;', title: '有赞小程序商城', desc: '微信商城、视频号带货、抖音本地生活、小红书开店，多平台一键同步，全网卖货无忧。', features: ['微信小程序商城', '视频号小店', '抖音本地生活', '小红书本地生活'] },
     { icon: '&#128187;', title: '门店数字化升级', desc: '智能收银、库存管理、扫码点单、外卖自提、同城配送，线上线下一体化经营。', features: ['智能收银系统', '扫码点单', '外卖自提', '多门店管理'] },
     { icon: '&#128101;', title: '会员私域运营', desc: '会员储值、积分等级、企微互通、精准营销，让老客户持续复购，复购率平均提升30%+。', features: ['会员储值系统', '积分等级', '企微助手', '精准营销'] },
-    { icon: '&#127775;', title: '内蒙古本地专属服务', desc: '免费上门演示、一对一培训、店铺搭建上线、7×12小时售后，全内蒙11城本地化服务。', features: ['免费上门演示', '一对一培训', '7×12售后', '全内蒙覆盖'] }
+    { icon: '&#127775;', title: '内蒙古本地专属服务', desc: '免费上门演示、一对一培训、店铺搭建上线、7×12小时售后，全内蒙12盟市本地化服务。', features: ['免费上门演示', '一对一培训', '7×12售后', '全内蒙覆盖'] }
   ];
 
   const stats = [
     { num: '300+', label: '服务商家' },
-    { num: '11', label: '覆盖城市' },
+    { num: '12', label: '覆盖城市' },
     { num: '7', label: '深耕行业' },
     { num: '9', label: '年服务经验' }
   ];
@@ -143,7 +143,7 @@ function buildIndex() {
 
 <section class="section bg-light">
   <div class="container">
-    <h2 class="section-title">服务全内蒙古11个城市</h2>
+    <h2 class="section-title">服务全内蒙古12个盟市</h2>
     <p class="section-subtitle">无论您在哪个城市，我们都能提供本地化的上门服务</p>
     <div class="city-grid">
       ${CITIES.map(c => `<a href="/city/${c.slug}/" class="city-card"><span class="city-name">${c.name}</span></a>`).join('')}
@@ -225,7 +225,7 @@ function buildServices() {
     },
     {
       icon: '&#127775;', title: '内蒙古本地专属服务', subtitle: '本地化团队，面对面服务',
-      desc: '我们是内蒙古本地团队，服务覆盖全内蒙11个城市，提供免费的上门演示、面对面培训、店铺搭建支持等服务。呼和浩特、包头、赤峰、通辽、鄂尔多斯等主要城市均可安排上门服务。',
+      desc: '我们是内蒙古本地团队，服务覆盖全内蒙12个盟市，提供免费的上门演示、面对面培训、店铺搭建支持等服务。呼和浩特、包头、呼伦贝尔、赤峰、通辽、鄂尔多斯等主要城市均可安排上门服务。',
       features: ['免费上门演示', '一对一培训', '店铺搭建与配置', '7×12小时售后支持', '营销活动策划', '定期回访优化', '紧急问题快速响应', '长期陪跑服务']
     }
   ];
@@ -325,7 +325,7 @@ ${ctaSection()}`;
 // ========== 关于我们 ==========
 function buildAbout() {
   const title = '关于我们 | 有赞内蒙古运营中心 - 内蒙古神客科技有限公司';
-  const description = '了解有赞内蒙古运营中心。我们是内蒙古神客科技有限公司，有赞官方授权的内蒙古地区独家服务商，已服务300余家内蒙古本地企业，覆盖全内蒙11个城市。';
+  const description = '了解有赞内蒙古运营中心。我们是内蒙古神客科技有限公司，有赞官方授权的内蒙古地区独家服务商，已服务300余家内蒙古本地企业，覆盖全内蒙12个盟市。';
 
   const clients = [
     { name: '伊利伊知牛', desc: '牛肉产品线上商城搭建，会员体系运营' },
@@ -344,7 +344,7 @@ function buildAbout() {
 
   const whyCards = [
     { title: '官方独家授权', desc: '有赞官方授权的内蒙古地区独家服务商，拥有最完整的服务网络和最直接的官方支持通道。' },
-    { title: '全内蒙覆盖', desc: '服务覆盖呼和浩特、包头、赤峰、通辽、鄂尔多斯等全内蒙11个城市，无论您在哪里都能获得本地化服务。' },
+    { title: '全内蒙覆盖', desc: '服务覆盖呼和浩特、包头、呼伦贝尔、赤峰、通辽、鄂尔多斯等全内蒙12个盟市，无论您在哪里都能获得本地化服务。' },
     { title: '行业深耕', desc: '针对特产、牛羊肉、烘焙、酒水、母婴、美业、咖啡茶饮7大行业，提供成熟的专业解决方案。' },
     { title: '本地化服务', desc: '内蒙古本地团队，提供免费上门演示、面对面培训、7×12小时售后支持。' },
     { title: '全链路交付', desc: '从咨询、演示、开通、搭建、培训到售后，全程专人对接，确保平稳上线。' },
@@ -365,13 +365,13 @@ function buildAbout() {
       <div class="about-intro">
         <h2>有赞官方授权的内蒙古独家服务商</h2>
         <p>内蒙古神客科技有限公司是有赞官方授权的<strong>内蒙古地区独家服务商与代理商</strong>。自2015年成立以来，我们始终专注于为内蒙古本地实体商家提供数字化升级服务。</p>
-        <p>我们总部位于呼和浩特市赛罕区金桥电子商务产业园，服务网络覆盖全内蒙古<strong>11个城市</strong>，累计服务本地企业客户<strong>300余家</strong>，深耕特产、牛羊肉、烘焙、酒水、母婴、美业、咖啡茶饮<strong>7大行业</strong>。</p>
+        <p>我们总部位于呼和浩特市赛罕区金桥电子商务产业园，服务网络覆盖全内蒙古<strong>12个盟市</strong>，累计服务本地企业客户<strong>300余家</strong>，深耕特产、牛羊肉、烘焙、酒水、母婴、美业、咖啡茶饮<strong>7大行业</strong>。</p>
         <p>我们的使命是帮助内蒙古实体商家实现线上线下一体化经营，通过有赞SaaS平台和本地化专业服务，让每一位商家都能轻松拥抱数字化新零售。</p>
       </div>
       <div class="about-stats">
         <div class="about-stat"><div class="about-stat-num">2015</div><div class="about-stat-label">成立年份</div></div>
         <div class="about-stat"><div class="about-stat-num">300+</div><div class="about-stat-label">服务商家</div></div>
-        <div class="about-stat"><div class="about-stat-num">11</div><div class="about-stat-label">覆盖城市</div></div>
+        <div class="about-stat"><div class="about-stat-num">12</div><div class="about-stat-label">覆盖城市</div></div>
         <div class="about-stat"><div class="about-stat-num">7</div><div class="about-stat-label">深耕行业</div></div>
       </div>
     </div>
@@ -444,7 +444,7 @@ function buildContact() {
         </div>
         <div class="cta-box cta-box-alt">
           <h3>免费上门演示</h3>
-          <p>呼和浩特、包头、赤峰、通辽、鄂尔多斯等主要城市均可安排上门服务。</p>
+          <p>呼和浩特、包头、呼伦贝尔、赤峰、通辽、鄂尔多斯等主要城市均可安排上门服务。</p>
           <a href="tel:15652701682" class="btn btn-secondary">预约上门演示</a>
         </div>
       </div>
@@ -499,8 +499,8 @@ function buildFAQ() {
 
 // ========== 城市列表页 ==========
 function buildCityIndex() {
-  const title = '服务城市 | 有赞内蒙古运营中心 - 覆盖全内蒙11个城市';
-  const description = '有赞内蒙古运营中心服务覆盖全内蒙古11个城市：呼和浩特、包头、赤峰、通辽、鄂尔多斯、乌兰察布、巴彦淖尔、乌海、兴安盟、锡林郭勒、阿拉善。无论您在哪个城市，都能获得本地化上门服务。';
+  const title = '服务城市 | 有赞内蒙古运营中心 - 覆盖全内蒙12个盟市';
+  const description = '有赞内蒙古运营中心服务覆盖全内蒙古12个盟市：呼和浩特、包头、呼伦贝尔、赤峰、通辽、鄂尔多斯、乌兰察布、巴彦淖尔、乌海、兴安盟、锡林郭勒、阿拉善。无论您在哪个城市，都能获得本地化上门服务。';
 
   const promises = [
     { strong: '免费上门演示', desc: '主要城市均可安排专业人员上门演示有赞功能' },
@@ -513,7 +513,7 @@ function buildCityIndex() {
 <section class="page-hero">
   <div class="container">
     ${breadcrumb('/city/')}
-    <h1>服务全内蒙古11个城市</h1>
+    <h1>服务全内蒙古12个盟市</h1>
     <p>无论您在哪个城市，我们都能提供本地化的上门服务</p>
   </div>
 </section>
@@ -647,7 +647,7 @@ ${ctaSection(`预约${city.name}免费上门演示`)}`;
 // ========== 博客列表 ==========
 function buildBlogIndex() {
   const title = '知识中心 | 有赞内蒙古运营中心 - 数字化经营干货';
-  const description = '有赞内蒙古运营中心知识中心，分享小程序商城搭建、门店数字化升级、会员私域运营等实操干货。覆盖内蒙古11个城市、7大行业的数字化经营指南。';
+  const description = '有赞内蒙古运营中心知识中心，分享小程序商城搭建、门店数字化升级、会员私域运营等实操干货。覆盖内蒙古12个盟市、7大行业的数字化经营指南。';
 
   const body = `
 <section class="page-hero">
