@@ -5,7 +5,7 @@ import { writeFileSync, mkdirSync, copyFileSync, existsSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { SITE, CITIES, CITY_INTROS, CITY_CASES, INDUSTRIES, FAQS, BLOG_POSTS } from './shared.mjs';
-import { htmlPage, defaultOrgSchema, websiteSchema, breadcrumbSchema } from './css.mjs';
+import { htmlPage, defaultOrgSchema, websiteSchema, breadcrumbSchema, faqSchema } from './css.mjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -199,7 +199,7 @@ function buildIndex() {
 
 ${ctaSection()}`;
 
-  return htmlPage({ title, description, keywords, currentPath: '/', schemas: [defaultOrgSchema, websiteSchema], body });
+  return htmlPage({ title, description, keywords, currentPath: '/', schemas: [defaultOrgSchema, websiteSchema, faqSchema], body });
 }
 
 // ========== 服务页 ==========
@@ -424,7 +424,7 @@ function buildContact() {
       <div class="contact-info">
         <h2>联系方式</h2>
         <div class="contact-item"><div class="contact-icon">&#9742;</div><div><h3>电话咨询</h3><p><a href="tel:15652701682">15652701682</a>（同微信）</p></div></div>
-        <div class="contact-item"><div class="contact-icon">&#9993;</div><div><h3>电子邮箱</h3><p>1663526639@qq.com</p></div></div>
+        <div class="contact-item"><div class="contact-icon">&#9993;</div><div><h3>电子邮箱</h3><p><a href="mailto:${SITE.email}">${SITE.email}</a></p></div></div>
         <div class="contact-item"><div class="contact-icon">&#127968;</div><div><h3>公司地址</h3><p>呼和浩特市赛罕区金桥电子商务产业园3楼326</p></div></div>
         <div class="contact-item"><div class="contact-icon">&#128338;</div><div><h3>服务时间</h3><p>周一至周日 09:00 - 21:00</p></div></div>
         <div class="contact-item"><div class="contact-icon">&#127760;</div><div><h3>官方网站</h3><p><a href="https://www.shark888.cn">www.shark888.cn</a></p></div></div>
