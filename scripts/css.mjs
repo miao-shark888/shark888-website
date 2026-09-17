@@ -719,7 +719,7 @@ ${keywords ? `<meta name="keywords" content="${keywords}" />` : ''}
 <meta property="og:site_name" content="有赞内蒙古运营中心" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="format-detection" content="telephone=yes" />
-<meta name="baidu-site-verification" content="codeva-07Ua40vFYI" />
+<meta name="baidu-site-verification" content="codeva-FoVwNHLAJ0" />
 <!-- 搜索引擎验证标签（百度站长平台），task 7686395109436394424 浏览器接管流程添加 -->
 ${schemas.map(s => `<script type="application/ld+json">${JSON.stringify(s)}</script>`).join('\n')}
 <style>${CSS}</style>
